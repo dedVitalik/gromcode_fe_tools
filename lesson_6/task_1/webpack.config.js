@@ -10,10 +10,23 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
-                test: /.(jpg|png)$/,
+                test: /.jpg$/,
                 use: [
                     {
-                        loader: ['file-loader', 'url-loader'],
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            name: '[name].[ext]',
+                            outputPath: 'images/',
+                        }
+                    }
+                ]
+            },
+            {
+                test: /.png$/,
+                use: [
+                    {
+                        loader: 'url-loader',
                         options: {
                             limit: 8192,
                             name: '[name].[ext]',
