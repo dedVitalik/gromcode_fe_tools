@@ -13,9 +13,9 @@ module.exports = {
                 test: /.(jpg|png)$/,
                 use: [
                     {
-                        loader: 'url-loader',
+                        loader: ['url-loader', 'file-loader'],
                         options: {
-                            limit: 8,
+                            limit: 8192,
                             name: '[name].[ext]',
                             outputPath: 'images/',
                         }
