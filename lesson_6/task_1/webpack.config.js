@@ -13,7 +13,7 @@ module.exports = {
                 test: /.(jpg|png)$/,
                 use: [
                     {
-                        loader: ['url-loader', 'file-loader'],
+                        loader: ['file-loader', 'url-loader'],
                         options: {
                             limit: 8192,
                             name: '[name].[ext]',
