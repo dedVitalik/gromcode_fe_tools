@@ -6,20 +6,16 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.css$/,
-                use: ['style-loader', 'css-loader'],
-            },
-            {
-                test: /.scss$/,
+                test: /.s?css$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test: /.(jpg|png)$/,
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: 'url-loader',
                         options: {
-                            limit: 8192,
+                            limit: 8,
                             name: '[name].[ext]',
                             outputPath: 'images/',
                         }
