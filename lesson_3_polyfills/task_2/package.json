@@ -6,10 +6,10 @@
   "scripts": {
     "test": "jest",
     "copy:html": "cp ./src/index.html ./dist/index.html",
-    "build:scripts": "babel ./src --out-dir=./dist",
-    "copy:styles": "cp -R ./src/styles ./dist/styles",
+    "build:scripts": "webpack -p",
     "clean": "rm -rf ./dist",
     "make:dist": "npm run clean && mkdir dist",
+    "watch": "webpack -d --devtools eval-source-maps -w",
     "build": "npm-run-all make:dist build:* copy:*"
   },
   "keywords": [],

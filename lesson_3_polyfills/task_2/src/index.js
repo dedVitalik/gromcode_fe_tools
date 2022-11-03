@@ -1,6 +1,7 @@
-import {renderTasks} from './render.js';
-import {createTaskBtnHandler} from './add-task.js';
-import {getTasksFromServer, changeTaskOnServer} from './server.js';
+import {renderTasks} from './scripts/render.js';
+import {createTaskBtnHandler} from './scripts/add-task.js';
+import {getTasksFromServer, changeTaskOnServer} from './scripts/server.js';
+import './index.scss';
 
 const listElem = document.querySelector('.list');
 
@@ -9,7 +10,6 @@ getTasksFromServer()
         renderTasks(tasksList, listElem);
     });
 
-// renderTasks(tasks, listElem);
 const newTaskText = document.querySelector('.task-input');
 const checkButton = document.querySelector('.list');
 const createButton = document.querySelector('.create-task-btn');
@@ -26,35 +26,15 @@ const checkboxChangeHandler = (evt) => {
         done: evt.target.checked,
     };
     
-    // changeTaskOnServer(changedTask.id, changedTask)
-    //     .then(() => {
-    //         getTasksFromServer()
-    //             .then(tasksList => {
-    //                 renderTasks(tasksList, listElem);
-    //             });
-    //     });
-    
     changeTaskOnServer(changedTask.id, changedTask)
         .then(getTasksFromServer)
         .then(tasksList => {
             renderTasks(tasksList, listElem);
         });
-    // const taskData = tasks.find(task => task.id === +evt.target.dataset.id);
-    // Object.assign(taskData, {done: evt.target.checked});
-    // localStorage.setItem('tasksList', JSON.stringify(tasks));
-    
-    // renderTasks(tasks, listElem);
 }
-
-// const handleOnStorageChange = (evt) => {
-//     renderTasks(JSON.parse(evt.newValue), listElem);
-// }
 
 checkButton.addEventListener('click', checkboxChangeHandler);
 createButton.addEventListener('click', () => {
     createTaskBtnHandler(newTaskText.value, listElem);
     newTaskText.value = '';
 });
-
-// window.addEventListener('storage', handleOnStorageChange);
-
