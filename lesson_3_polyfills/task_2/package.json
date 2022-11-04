@@ -4,13 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "copy:html": "cp ./src/index.html ./dist/index.html",
-    "build:scripts": "webpack -p",
-    "clean": "rm -rf ./dist",
-    "make:dist": "npm run clean && mkdir dist",
-    "watch": "webpack -d --devtools eval-source-maps -w",
-    "build": "npm-run-all make:dist build:* copy:*"
+    "build": "webpack -p",
+    "start": "webpack-dev-server -d --devtool eval-source-maps --open"
   },
   "keywords": [],
   "author": "",
